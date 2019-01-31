@@ -1,4 +1,4 @@
-package backend
+package backend.routes
 
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import com.typesafe.scalalogging.LazyLogging
