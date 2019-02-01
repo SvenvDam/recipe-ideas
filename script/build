@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+sbt clean assembly
+
+docker build \
+    --no-cache \
+    -f docker/backend/Dockerfile \
+    -t recipe-ideas-backend:0.1 \
+    .

@@ -5,8 +5,9 @@ networks:
 
 services:
 
-  core1:
+  db:
     image: neo4j:3.3.1-enterprise
+    container_name: recipe-ideas-db
     networks:
       - lan
     ports:
@@ -25,3 +26,11 @@ services:
       - NEO4J_dbms_connector_http_listen__address=:7474
       - NEO4J_dbms_connector_https_listen__address=:6477
       - NEO4J_dbms_connector_bolt_listen__address=:7687
+
+  backend:
+    image: recipe-ideas-backend:0.1
+    container_name: recipe-ideas-backend
+    networks:
+      - lan
+    ports:
+      - 9000:9000
