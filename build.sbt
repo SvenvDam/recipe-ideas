@@ -19,5 +19,6 @@ libraryDependencies ++= Seq(
   akkaTestkit,
   akkaStreamTestkit,
   akkaHttpTestkit,
-  scalaTest
+  scalaTest,
+  mockito
 )

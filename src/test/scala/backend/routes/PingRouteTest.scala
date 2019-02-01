@@ -1,23 +1,26 @@
 package backend.routes
 
 import akka.http.scaladsl.testkit.ScalatestRouteTest
+import backend.Neo4jRepository
 import com.typesafe.scalalogging.LazyLogging
+import org.scalatest.mockito.MockitoSugar
 import org.scalatest.{FunSuiteLike, Matchers}
 
 class PingRouteTest
   extends FunSuiteLike
     with ScalatestRouteTest
     with Matchers
+    with MockitoSugar
     with LazyLogging {
 
-  import PingRouteTest._
+  val repo = mock[Neo4jRepository]
+  val route = PingRoute(repo).route
 
   test("it should return 'pong' on ping endpoint") {
-    Get("/ping") ~> pingRoute ~> check {
+
+    Get("/ping") ~> route ~> check {
       responseAs[String] shouldEqual "pong"
-      response.status.value shouldEqual "200 OK"
+      status.intValue shouldEqual 200
     }
   }
 }
-
-object PingRouteTest extends PingRoute
