@@ -18,17 +18,39 @@ This is a tool aimed at home cooks who do not use recipes as a strict guidance b
 It is not a recipe organizer where you can store your recipes in a structured way and query them.
 Nor is it a tool which helps you follow the recipe instructions.
 
-### Run
+### Instructions
+
+#### Build
+```bash
+script/build
+```
+This will package the application and build Docker images
+
+#### Run
 ```bash
 script/run
 ```
+This will run the docker compose with all services
 
-### Stop
+#### Stop
 ```bash
 script/kill
 ```
 
-### View project in browser
+#### View project in browser
 ```bash
 script/browser
 ```
+
+#### Run tests
+```bash
+script/test
+```
+
+
+### Architecture
+
+The project will consist of three components
+* **Database:** a neo4j instance storing recipes and ingredients
+* **Back-end:** an akka-based application translating the db connectivity into a REST interface
+* **Front-end:** a flask-based web app to interact with the data through your browser
