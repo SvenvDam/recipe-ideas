@@ -5,8 +5,10 @@ networks:
 
 services:
 
-  db:
-    image: neo4j:3.3.1-enterprise
+  database:
+    # https://github.com/neo4j/docker-neo4j/pull/161
+    # wait for this fix to be released before mounting logs then bump to more recent version
+    image: neo4j:3.3.1
     container_name: recipe-ideas-db
     networks:
       - lan
@@ -15,10 +17,10 @@ services:
       - 6477:6477
       - 7687:7687
     volumes:
-      - /opt/dev/IdeaProjects/recipes/DB/core1/conf:/var/lib/neo4j/conf
-      - /opt/dev/IdeaProjects/recipes/DB/core1/data:/var/lib/neo4j/data
-      - /opt/dev/IdeaProjects/recipes/DB/core1/logs:/logs
-      - /opt/dev/IdeaProjects/recipes/DB/core1/plugins:/plugins
+      - ./DB/core1/conf:/var/lib/neo4j/conf
+      - ./DB/core1/data:/var/lib/neo4j/data
+      - ./DB/core1/logs:/logs
+      - ./DB/core1/plugins:/plugins
     environment:
       - NEO4J_AUTH=none
       - NEO4J_dbms_mode=SINGLE

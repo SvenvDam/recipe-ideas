@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
-docker-compose -f docker/docker-compose.yaml kill
-docker-compose -f docker/docker-compose.yaml down
+docker-compose -f docker/docker-compose.yaml --project-directory . kill
+docker-compose -f docker/docker-compose.yaml --project-directory . down
