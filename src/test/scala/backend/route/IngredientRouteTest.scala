@@ -1,4 +1,4 @@
-package backend.routes
+package backend.route
 
 import akka.http.scaladsl.model.{HttpEntity, HttpResponse, MediaTypes}
 import akka.http.scaladsl.testkit.ScalatestRouteTest

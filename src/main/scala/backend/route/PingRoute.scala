@@ -1,4 +1,4 @@
-package backend.routes
+package backend.route
 
 import akka.http.scaladsl.server.Directives.{complete, get, path}
 import akka.http.scaladsl.server.Route

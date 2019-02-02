@@ -2,7 +2,7 @@ package backend
 
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
-import backend.routes._
+import backend.route._
 
 class Router(neo4jRepository: Neo4jRepository) {
   import Router._

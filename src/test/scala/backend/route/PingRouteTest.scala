@@ -1,4 +1,4 @@
-package backend.routes
+package backend.route
 
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import backend.Neo4jRepository
@@ -12,12 +12,9 @@ class PingRouteTest
     with Matchers
     with MockitoSugar
     with LazyLogging {
-
-  val repo = mock[Neo4jRepository]
-  val route = PingRoute(repo).route
-
   test("it should return 'pong' on ping endpoint") {
-
+    val repo = mock[Neo4jRepository]
+    val route = PingRoute(repo).route
     Get("/ping") ~> route ~> check {
       responseAs[String] shouldEqual "pong"
       status.intValue shouldEqual 200
