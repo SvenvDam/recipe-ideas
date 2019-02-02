@@ -2,7 +2,7 @@ import Dependencies._
 
 name := "recipe-ideas"
 version := "0.1"
-scalaVersion := "2.12.7"
+scalaVersion := "2.11.12"
 assemblyJarName in assembly := name.value + "-backend.jar"
 
 Compile / mainClass := Some("backend.Main")
@@ -13,8 +13,10 @@ libraryDependencies ++= Seq(
   akkaHttp,
   akkaSlf4j,
   akkaHttpSpray,
-  akkaLogging,
+  scalaLogging,
   logBack,
+  neo4jDriver,
+  neoTypes,
 
   akkaTestkit,
   akkaStreamTestkit,

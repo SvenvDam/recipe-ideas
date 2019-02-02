@@ -9,8 +9,10 @@ object Dependencies {
   lazy val akkaSlf4j = "com.typesafe.akka" %% "akka-slf4j" % akkaVersion
   lazy val akkaHttp = "com.typesafe.akka" %% "akka-http" % akkaHttpVersion
   lazy val akkaHttpSpray = "com.typesafe.akka" %% "akka-http-spray-json" % akkaHttpVersion
-  lazy val akkaLogging = "com.typesafe.scala-logging" %% "scala-logging" % "3.9.2"
+  lazy val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0"
   lazy val logBack = "ch.qos.logback" % "logback-classic" % "1.2.3"
+  lazy val neo4jDriver = "org.neo4j.driver" % "neo4j-java-driver" % "1.7.2"
+  lazy val neoTypes = "com.dimafeng" %% "neotypes" % "0.4.0"
 
   // Test dependencies
   lazy val akkaTestkit = "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test
