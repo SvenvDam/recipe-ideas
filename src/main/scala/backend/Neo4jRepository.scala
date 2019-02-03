@@ -4,7 +4,6 @@ import backend.model.Ingredient
 import backend.query.GetIngredientsQuery
 import neotypes.Driver
 import neotypes.implicits._
-
 import scala.concurrent.Future
 
 

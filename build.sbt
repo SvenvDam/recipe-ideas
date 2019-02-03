@@ -9,18 +9,23 @@ Compile / mainClass := Some("backend.Main")
 
 libraryDependencies ++= Seq(
   akka,
-  akkaStream,
   akkaHttp,
-  akkaSlf4j,
+  akkaHttpCore,
   akkaHttpSpray,
-  scalaLogging,
+  akkaSlf4j,
+  akkaStream,
   logBack,
   neo4jDriver,
   neoTypes,
+  scalaLogging,
+  shapeless,
+  sprayJson,
 
   akkaTestkit,
-  akkaStreamTestkit,
   akkaHttpTestkit,
+  akkaStreamTestkit,
+  jerseyCore,
+  mockito,
+  neo4jHarness,
   scalaTest,
-  mockito
 )
