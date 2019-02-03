@@ -4,7 +4,6 @@ import akka.http.scaladsl.model.{HttpEntity, HttpResponse, MediaTypes}
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import backend.Neo4jRepository
 import backend.model.Ingredient
-import com.typesafe.scalalogging.LazyLogging
 import org.mockito.Mockito._
 import org.scalatest.mockito.MockitoSugar
 import org.scalatest.{FunSuiteLike, Matchers}
@@ -15,9 +14,7 @@ class IngredientRouteTest
   extends FunSuiteLike
     with ScalatestRouteTest
     with Matchers
-    with MockitoSugar
-    with LazyLogging {
-
+    with MockitoSugar {
   val repo = mock[Neo4jRepository]
   val route = IngredientRoute(repo).route
 

@@ -4,7 +4,6 @@ import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
 import backend.model.Ingredient
 import backend.query.InitializeExampleDb
-import com.typesafe.scalalogging.LazyLogging
 import neotypes.implicits._
 import org.neo4j.driver.v1.GraphDatabase
 import org.neo4j.harness.TestServerBuilders
@@ -13,7 +12,7 @@ import org.scalatest.{BeforeAndAfterAll, FunSuiteLike, Matchers}
 import scala.concurrent.duration._
 import scala.concurrent.{Await, ExecutionContext, Future}
 
-class Neo4jRepositoryTest extends FunSuiteLike with Matchers with BeforeAndAfterAll with LazyLogging {
+class Neo4jRepositoryTest extends FunSuiteLike with Matchers with BeforeAndAfterAll {
   import Neo4jRepositoryTest._
 
   override def afterAll(): Unit = driver.close()

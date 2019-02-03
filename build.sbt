@@ -12,12 +12,9 @@ libraryDependencies ++= Seq(
   akkaHttp,
   akkaHttpCore,
   akkaHttpSpray,
-  akkaSlf4j,
   akkaStream,
-  logBack,
   neo4jDriver,
   neoTypes,
-  scalaLogging,
   shapeless,
   sprayJson,
 
