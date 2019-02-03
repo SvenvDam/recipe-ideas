@@ -5,6 +5,7 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import backend.Neo4jRepository
 import backend.model.Ingredient
+import org.neo4j.driver.v1.summary.ResultSummary
 import spray.json._
 
 import scala.util.{Failure, Success}
@@ -21,7 +22,7 @@ object IngredientRoute extends SprayJsonSupport with DefaultJsonProtocol {
           extractExecutionContext { implicit executor =>
             val result = neo4jRepository.postIngredient(ingredient)
             onComplete(result) {
-              case Success(ing) => complete(ing)
+              case Success(r: ResultSummary) => complete(200, s"Executed query: ${r.statement.text}")
               case Failure(e) => complete(500, e)
             }
           }
@@ -29,7 +30,7 @@ object IngredientRoute extends SprayJsonSupport with DefaultJsonProtocol {
       } ~
       get {
         extractExecutionContext { implicit executor =>
-          val results = neo4jRepository.getIngredients
+          val results = neo4jRepository.getAllIngredients
           onComplete(results) {
             case Success(ings) => complete(ings)
             case Failure(e) => complete(500, e)
