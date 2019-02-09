@@ -15,7 +15,7 @@ object Dependencies {
   lazy val neoTypes = "com.dimafeng" %% "neotypes" % "0.4.0"
   lazy val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging" % "3.9.0"
   lazy val shapeless = "com.chuusai" %% "shapeless" % "2.3.3"
-  lazy val sprayJson = "io.spray" %% "spray-json" % "1.3.4"
+  lazy val slf4jApi = "org.slf4j" % "slf4j-api" % "1.7.25"
 
   // Test dependencies
   lazy val akkaTestkit = "com.typesafe.akka" %% "akka-testkit" % akkaVersion % Test
@@ -25,4 +25,5 @@ object Dependencies {
   lazy val mockito = "org.mockito" % "mockito-all" % "1.9.5" % Test
   lazy val neo4jHarness = "org.neo4j.test" % "neo4j-harness" % "3.3.1" % Test
   lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.0.5" % Test
+  lazy val slf4Log4j12 = "org.slf4j" % "slf4j-log4j12" % "1.7.25" % Test
 }

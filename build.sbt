@@ -12,11 +12,13 @@ libraryDependencies ++= Seq(
   akkaHttp,
   akkaHttpCore,
   akkaHttpSpray,
+  akkaSlf4j,
   akkaStream,
   neo4jDriver,
   neoTypes,
+  scalaLogging,
   shapeless,
-  sprayJson,
+  slf4jApi,
 
   akkaTestkit,
   akkaHttpTestkit,
@@ -25,4 +27,5 @@ libraryDependencies ++= Seq(
   mockito,
   neo4jHarness,
   scalaTest,
+  slf4Log4j12
 )

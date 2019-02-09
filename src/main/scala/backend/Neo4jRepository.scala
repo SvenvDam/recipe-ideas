@@ -1,6 +1,6 @@
 package backend
 
-import backend.model.Ingredient
+import backend.model.{Ingredient, Recipe}
 import backend.query.{GetIngredientsQuery, InsertIngredientQuery}
 import neotypes.Driver
 import neotypes.implicits._
@@ -21,4 +21,8 @@ class Neo4jRepository(driver: Driver[Future]) {
       insertIngredientQuery.query.query[ResultSummary].execute(session)
     }
   }
+
+  def getAllRecipes: Future[Seq[Recipe]] = ???
+
+  def postRecipe(recipe: Recipe): Future[ResultSummary] = ???
 }

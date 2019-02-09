@@ -22,7 +22,7 @@ class Neo4jRepositoryTest
 
   override def beforeEach = {
     val cleanResult = driver.writeSession { session =>
-      CleanDb.query.query[Ingredient].list(session)
+      CleanDb.query.query[ResultSummary].execute(session)
     }
     Await.ready(cleanResult, 10.seconds)
     val initializeResult = driver
