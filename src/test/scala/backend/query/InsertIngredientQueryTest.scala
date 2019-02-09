@@ -1,9 +1,10 @@
 package backend.query
 
 import backend.model.Ingredient
-import org.scalatest.{FunSuiteLike, Matchers}
+import org.scalatest.FunSuiteLike
+import org.scalatest.Matchers._
 
-class InsertIngredientQueryTest extends FunSuiteLike with Matchers {
+class InsertIngredientQueryTest extends FunSuiteLike {
   test("it should construct from Ingredient correctly") {
     val carrot = Ingredient("Carrot")
     val carrotQuery = InsertIngredientQuery(carrot)

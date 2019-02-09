@@ -8,14 +8,14 @@ import neotypes.implicits._
 import org.neo4j.driver.v1.GraphDatabase
 import org.neo4j.driver.v1.summary.ResultSummary
 import org.neo4j.harness.TestServerBuilders
-import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuiteLike, Matchers}
+import org.scalatest.Matchers._
+import org.scalatest.{BeforeAndAfterAll, BeforeAndAfterEach, FunSuiteLike}
 
 import scala.concurrent.duration._
 import scala.concurrent.{Await, ExecutionContext, Future}
 
 class Neo4jRepositoryTest
   extends FunSuiteLike
-    with Matchers
     with BeforeAndAfterAll
     with BeforeAndAfterEach {
   import Neo4jRepositoryTest._

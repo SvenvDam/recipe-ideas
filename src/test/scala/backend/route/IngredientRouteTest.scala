@@ -4,20 +4,17 @@ import akka.http.scaladsl.model.{HttpEntity, HttpResponse, MediaTypes}
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import backend.Neo4jRepository
 import backend.model.Ingredient
-import org.mockito.Mockito._
+import org.mockito.Mockito.{verify, when}
 import org.neo4j.driver.internal.summary.InternalResultSummary
 import org.neo4j.driver.v1.Statement
 import org.neo4j.driver.v1.summary._
-import org.scalatest.mockito.MockitoSugar
-import org.scalatest.{FunSuiteLike, Matchers}
+import org.scalatest.FunSuiteLike
+import org.scalatest.Matchers._
+import org.scalatest.mockito.MockitoSugar._
 
 import scala.concurrent.Future
 
-class IngredientRouteTest
-  extends FunSuiteLike
-    with ScalatestRouteTest
-    with Matchers
-    with MockitoSugar {
+class IngredientRouteTest extends FunSuiteLike with ScalatestRouteTest {
   import IngredientRouteTest._
   val repo = mock[Neo4jRepository]
   val route = IngredientRoute(repo).route

@@ -1,8 +1,9 @@
 package backend.query
 
-import org.scalatest.{FunSuiteLike, Matchers}
+import org.scalatest.FunSuiteLike
+import org.scalatest.Matchers._
 
-class QueryUtilsTest extends FunSuiteLike with Matchers {
+class QueryUtilsTest extends FunSuiteLike {
   object Util extends QueryUtils
 
   test("it should format node names correctly") {
