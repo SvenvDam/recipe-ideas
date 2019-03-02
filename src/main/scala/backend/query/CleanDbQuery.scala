@@ -1,5 +1,5 @@
 package backend.query
 
-object CleanDb extends CypherQuery {
+object CleanDbQuery extends CypherQuery {
   val query = "MATCH (n) DETACH DELETE n"
 }

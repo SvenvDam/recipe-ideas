@@ -2,6 +2,9 @@
 
 sbt clean assembly
 
+testRes=$?
+if [$testRes != 0]; then exit; fi
+
 docker build \
     --no-cache \
     -f docker/backend/Dockerfile \
@@ -11,3 +14,4 @@ docker build \
 for id in $(docker images --filter "dangling=true" -q) ; do
     docker rmi ${id}
 done
+

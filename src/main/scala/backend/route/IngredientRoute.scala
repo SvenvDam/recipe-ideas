@@ -20,7 +20,7 @@ object IngredientRoute extends SprayJsonSupport with DefaultJsonProtocol {
       extractExecutionContext { implicit executor =>
         post {
           entity(as[Ingredient]) { ingredient =>
-            val result = neo4jRepository.postIngredient(ingredient)
+            val result = neo4jRepository.insertIngredient(ingredient)
             onComplete(result) {
               case Success(r: ResultSummary) => complete(200, s"Executed query: ${r.statement.text}")
               case Failure(e) => complete(500, e)
@@ -29,7 +29,7 @@ object IngredientRoute extends SprayJsonSupport with DefaultJsonProtocol {
         } ~ get {
           val results = neo4jRepository.getAllIngredients
           onComplete(results) {
-            case Success(ings) => complete(ings)
+            case Success(ings) => complete(ings.toList)
             case Failure(e) => complete(500, e)
           }
         }

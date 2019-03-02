@@ -13,9 +13,9 @@ CREATE (Pulpo:Ingredient {name: 'Pulpo'})
 CREATE (Smoked_paprika:Ingredient {name: 'Smoked paprika'})
 CREATE (Bay_leaf:Ingredient {name: 'Bay leaf'})
 
-CREATE (French_onion_soup:Recipe {name: 'French onion soup', duration: 'Long'})
-CREATE (Spaghetti_with_meatballs:Recipe {name: 'Spaghetti with matballs', duration: 'Medium'})
-CREATE (Braised_pulpo:Recipe {name: 'Braised pulpo', duration: 'Long'})
+CREATE (French_onion_soup:Recipe {name: 'French onion soup', duration: 'Long', directions: '...'})
+CREATE (Spaghetti_with_meatballs:Recipe {name: 'Spaghetti with meatballs', duration: 'Medium', directions: '...'})
+CREATE (Braised_pulpo:Recipe {name: 'Braised pulpo', duration: 'Long', directions: '...'})
 
 CREATE
   (French_onion_soup)-[:Contains]->(Onion),

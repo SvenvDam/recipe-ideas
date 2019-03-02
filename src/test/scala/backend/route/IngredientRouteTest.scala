@@ -4,6 +4,7 @@ import akka.http.scaladsl.model.{HttpEntity, HttpResponse, MediaTypes}
 import akka.http.scaladsl.testkit.ScalatestRouteTest
 import backend.Neo4jRepository
 import backend.model.Ingredient
+import backend.model.Implicits._
 import org.mockito.Mockito.{verify, when}
 import org.neo4j.driver.internal.summary.InternalResultSummary
 import org.neo4j.driver.v1.Statement
@@ -12,6 +13,7 @@ import org.scalatest.FunSuiteLike
 import org.scalatest.Matchers._
 import org.scalatest.mockito.MockitoSugar._
 
+import scala.collection.immutable.SortedSet
 import scala.concurrent.Future
 
 class IngredientRouteTest extends FunSuiteLike with ScalatestRouteTest {
@@ -21,7 +23,7 @@ class IngredientRouteTest extends FunSuiteLike with ScalatestRouteTest {
 
   test("it should retrieve all ingredients") {
    when(repo.getAllIngredients).thenReturn(
-     Future.successful(Seq(Ingredient("carrot"), Ingredient("onion"))))
+     Future.successful(SortedSet(Ingredient("carrot"), Ingredient("onion"))))
 
     Get("/ingredient") ~> route ~> check {
       response shouldEqual HttpResponse(
@@ -32,14 +34,14 @@ class IngredientRouteTest extends FunSuiteLike with ScalatestRouteTest {
   }
 
   test("it should input a new ingredient") {
-    when(repo.postIngredient(Ingredient("carrot"))).thenReturn(
+    when(repo.insertIngredient(Ingredient("carrot"))).thenReturn(
       Future.successful(resultSummary("CREATE (carrot:Ingredient {name: 'carrot'})")))
 
     Post("/ingredient", HttpEntity(MediaTypes.`application/json`, """{"name": "carrot"}""")) ~> route ~> check {
       response shouldEqual HttpResponse(
         entity = HttpEntity("Executed query: CREATE (carrot:Ingredient {name: 'carrot'})"))
     }
-    verify(repo).postIngredient(Ingredient("carrot"))
+    verify(repo).insertIngredient(Ingredient("carrot"))
   }
 
   test("it should return 500 on neo4j failure") {
