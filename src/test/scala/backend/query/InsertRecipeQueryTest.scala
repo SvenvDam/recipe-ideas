@@ -1,15 +1,18 @@
 package backend.query
 
 import backend.model.{Ingredient, RawRecipe, Recipe}
+import com.typesafe.scalalogging.LazyLogging
 import org.scalatest.FunSuiteLike
 import org.scalatest.Matchers._
 
-class InsertRecipeQueryTest extends FunSuiteLike {
+class InsertRecipeQueryTest extends FunSuiteLike with LazyLogging {
   import InsertRecipeQueryTest._
 
-  test("it should construct a query form a recipe") {
+  //TODO: implement
+  test("it should construct a query from a recipe") {
     val recipeQuery = InsertRecipeQuery(testRecipe)
-    println(recipeQuery.query)
+    logger.info(recipeQuery.query)
+
   }
 }
 

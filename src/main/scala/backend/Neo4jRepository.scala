@@ -13,6 +13,7 @@ import scala.concurrent.Future
 
 class Neo4jRepository(driver: Driver[Future]) {
 
+  //TODO: make Seq[Ingredient]
   def getAllIngredients: Future[SortedSet[Ingredient]] = {
     driver.readSession { session =>
       session.transact { tx =>
@@ -33,13 +34,14 @@ class Neo4jRepository(driver: Driver[Future]) {
     }
   }
 
+  //TODO: make Seq[Recipe]
   def getAllRecipes: Future[SortedSet[Recipe]] = {
     driver.readSession { session =>
       session.transact { tx =>
         GetAllRecipesQuery.query
           .query[RawRecipe]
           .list(tx)
-          .map(s => s.map(Recipe.apply))
+          .map(_.map(Recipe.apply))
           .map(SortedSet[Recipe])
       }
     }

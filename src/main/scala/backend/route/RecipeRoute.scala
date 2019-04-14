@@ -21,6 +21,7 @@ object RecipeRoute extends SprayJsonSupport with DefaultJsonProtocol with LazyLo
       extractExecutionContext { implicit executor =>
         post {
           entity(as[RawRecipe]) { raw =>
+            logger.info(f"Received recipe: ${raw}")
             val result = neo4jRepository.insertRecipe(raw)
             onComplete(result) {
               case Success(r: ResultSummary) => complete(200, s"Executed query: ${r.statement.text}")
@@ -28,10 +29,11 @@ object RecipeRoute extends SprayJsonSupport with DefaultJsonProtocol with LazyLo
             }
           }
         } ~ get {
+          logger.info("Fetching all recipes!")
           val results = neo4jRepository.getAllRecipes
           onComplete(results) {
             case Success(recipes) => complete(recipes.toList.map { r =>
-              RawRecipe(r.name, r.duration, r.directions, r.ingredients.map(i => i.name).toList )
+              RawRecipe(r.name, r.duration, r.directions, r.ingredients.map(i => i.name).toList)
             })
             case Failure(e) => complete(500, e)
           }
